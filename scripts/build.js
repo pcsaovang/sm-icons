@@ -47,7 +47,7 @@ function indexFileContent(files, format, includeExtension = true) {
   files.map((fileName) => {
     const componentName = `${camelcase(fileName.replace(/.svg/, ""), {
       pascalCase: true,
-    })}Icon`;
+    })}`;
     const directoryString = `'./${componentName}${extension}'`;
     content +=
       format === "esm"
@@ -73,7 +73,7 @@ async function buildIcons(format = "esm") {
     files.flatMap(async (fileName) => {
       const componentName = `${camelcase(fileName.replace(/.svg/, ""), {
         pascalCase: true,
-      })}Icon`;
+      })}`;
       const content = await transformSVGtoJSX(fileName, componentName, format);
       const types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.SVGProps<SVGSVGElement>): JSX.Element;\nexport default ${componentName};\n`;
 
